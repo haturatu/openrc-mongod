@@ -7,7 +7,7 @@
 git clone https://github.com/example/openrc-mongod.git
 ```
 
-2. Mnove the mongod script to /etc/init.d/mongod.
+2. Move the mongod script to /etc/init.d/mongod.
 ```
 sudo mv mongod /etc/init.d/mongod
 ```
