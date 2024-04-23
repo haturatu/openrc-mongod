@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+
+command="/usr/bin/mongod"
+command_args="--fork --config /etc/mongodb.conf "
+pidfile="/var/run/mongodb/mongod.pid"
+name="MongoDB"
+description="MongoDB is a high-performance, open-source, NoSQL database"
+
+depend() {
+    need net
+    after firewall
+}
+
+start_pre() {
+    checkpath --directory --owner mongodb:mongodb --mode 0755 /var/run/mongodb
+    checkpath --directory --owner mongodb:mongodb --mode 0755 /var/lib/mongodb
+}
+
+start() {
+    ebegin "Starting ${name}"
+    start-stop-daemon --start --quiet --exec ${command} -- ${command_args}
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping ${name}"
+    start-stop-daemon --stop --quiet --pidfile ${pidfile}
+    eend $?
+}
+
