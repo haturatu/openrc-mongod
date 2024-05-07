@@ -4,7 +4,7 @@
 
 1. Clone this repository.
 ```
-git clone https://github.com/example/openrc-mongod.git
+git clone https://github.com/haturatu/openrc-mongod.git
 ```
 
 2. Move the mongod script to /etc/init.d/mongod.
